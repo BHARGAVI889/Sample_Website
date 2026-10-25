@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ramu's Sweets & Bakery – Preorder</title>
+<title>Ramu's Sweets &amp; Bakery – Preorder</title>
 <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--maroon:#7a0f1d;--maroon2:#5c0a15;--gold:#e0a526;--orange:#e8692a;--bg:#fbf1de;--card:#fffaf0;--ink:#2b1410;--line:#e6d3ad;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -68,8 +68,8 @@ footer{background:var(--maroon2);color:var(--gold);text-align:center;padding:18p
 .contact{background:var(--card);border-top:3px solid var(--gold);padding:26px 16px}.contact h2{max-width:1080px;margin:0 auto 10px;color:var(--maroon)}.cg{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.cg p{margin:2px 0 6px}.cg a{color:var(--orange);font-weight:700}#wab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:15;background:#128c4a;color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3);display:flex;gap:8px;align-items:center}
 @media (prefers-color-scheme:dark){.contact h2{color:var(--gold)}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-</style></head><body><div class="logo">Ramu's Sweets &amp; Bakery</div>
-<header class="hdr">
+</style></head><body>
+<header class="hdr"><div class="logo">Ramu's Sweets &amp; Bakery</div>
 <span id="who"></span><button class="btn ghost" id="admBtn" style="display:none">Admin panel</button><button class="btn ghost" id="authBtn">Sign in</button><button class="btn" id="cartBtn">Cart (0)</button></header>
 <section class="hero">
 <div id="heroK"></div><svg style="display:none" aria-hidden="true"><g id="k"><ellipse cx="50" cy="50" rx="34" ry="11"/><ellipse cx="50" cy="50" rx="34" ry="11" transform="rotate(45 50 50)"/><ellipse cx="50" cy="50" rx="34" ry="11" transform="rotate(90 50 50)"/><ellipse cx="50" cy="50" rx="34" ry="11" transform="rotate(135 50 50)"/></g>
@@ -98,13 +98,15 @@ footer{background:var(--maroon2);color:var(--gold);text-align:center;padding:18p
 <div class="ov mid wide" id="ownOv"><div class="pn"><button class="x" data-close aria-label="Close">×</button><div id="ownBody"></div></div></div>
 
 <script>
+// WHATSAPP NUMBER for orders: country code 91 + 10-digit number, no spaces or + sign.
+// For testing, put YOUR OWN number here. Put the shop's number only after the owner agrees.
 const SHOP_WA="919999999999";
 // UPI: put the shop's real UPI ID here (for example shopname@oksbi). This sample ID will not receive money.
 const SHOP_UPI="yourshop@upi";
-// SHOP DETAILS (sample values: change these to the real shop)
-const SHOP_ADDRESS="12-3-45, Main Road, Vijayawada, Andhra Pradesh 520001";
-const SHOP_PHONE="+91 99999 99999";
-const SHOP_HOURS="Every day, 8 AM to 9 PM";
+// SHOP DETAILS shown in the Visit us section
+const SHOP_ADDRESS="32-13-5, Boyapati Madhavarao St, Mogalrajapuram, Vijayawada, Andhra Pradesh 520010";
+const SHOP_PHONE="+91 90320 23019";
+const SHOP_HOURS="Every day, 7 AM to 10 PM";
 // ORDER RULES: smallest order, delivery charge, and the amount above which delivery is free
 const MIN_ORDER=300,DELIVERY_FEE=40,FREE_ABOVE=500;
 // Sweets shown with the Popular tag until the owner changes it in the admin panel
@@ -183,13 +185,13 @@ b.innerHTML='<h2>Preorder details</h2><form id="of"><label for="dt">Date you nee
 $("#oa").value=user.ad;const upd=()=>{const dl=b.querySelector("[name=m]:checked").value=="Home delivery";$("#adw").style.display=dl?"block":"none";const f=dl&&window.total<FREE_ABOVE?DELIVERY_FEE:0;$("#dfee").textContent=dl?(f?rs(f):"Free"):"Free for pickup";$("#gtot").textContent=rs(window.total+f)};b.querySelectorAll("[name=m]").forEach(r=>r.onchange=upd);
 $("#of").onsubmit=e=>{e.preventDefault();if(!$("#dt").value)return $("#oerr").textContent="Choose a date for your preorder.";
 const m=b.querySelector("[name=m]:checked").value,a=m=="Home delivery"?$("#oa").value.trim():"";if(m=="Home delivery"&&!a)return $("#oerr").textContent="Enter a delivery address.";
-const fee=m=="Home delivery"&&window.total<FREE_ABOVE?DELIVERY_FEE:0,gt=window.total+fee;const pay=b.querySelector("[name=pm]:checked").value,oid="SLS-"+String(Date.now()).slice(-5);const rec={t:Date.now(),n:user.fn+" "+user.ln,ph:user.ph,d:$("#dt").value+", "+$("#sl").value,m:m,a:a,it:cart.map(x=>x.n+" "+x.w+" x"+x.q),tot:gt,nt:$("#nt").value,s:"New",id:oid,pay:pay,paid:false};const lines=cart.map(x=>"• "+x.n+" "+x.w+" x"+x.q+" = "+rs(x.pr*x.q)).join("\n");
+const fee=m=="Home delivery"&&window.total<FREE_ABOVE?DELIVERY_FEE:0,gt=window.total+fee;const pay=b.querySelector("[name=pm]:checked").value,oid="RSB-"+String(Date.now()).slice(-5);const rec={t:Date.now(),n:user.fn+" "+user.ln,ph:user.ph,d:$("#dt").value+", "+$("#sl").value,m:m,a:a,it:cart.map(x=>x.n+" "+x.w+" x"+x.q),tot:gt,nt:$("#nt").value,s:"New",id:oid,pay:pay,paid:false};const lines=cart.map(x=>"• "+x.n+" "+x.w+" x"+x.q+" = "+rs(x.pr*x.q)).join("\n");
 const msg="New preorder "+oid+"\nName: "+user.fn+" "+user.ln+"\nPhone: "+user.ph+"\nDate: "+$("#dt").value+", "+$("#sl").value+"\n"+m+(a?"\nAddress: "+a:"")+"\n\n"+lines+(fee?"\nDelivery charge: "+rs(fee):"")+"\nTotal: "+rs(gt)+"\nPayment: "+(pay=="UPI"?"UPI (shop to confirm)":"Cash")+($("#nt").value?"\nNotes: "+$("#nt").value:"");
 b.innerHTML='<h2>Almost done</h2><p>Your preorder is ready. Tap the button to send it to the shop on WhatsApp. The shop confirms it with you.</p><pre style="white-space:pre-wrap;font:inherit;background:var(--card);border:1px dashed var(--line);padding:10px;border-radius:8px"></pre><a class="btn dark" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener">Send on WhatsApp</a>';
 b.querySelector("pre").textContent=msg;b.querySelector("a").href="https://wa.me/"+SHOP_WA+"?text="+encodeURIComponent(msg);b.querySelector("h2").textContent="Preorder "+oid;
 const lk=(t,h)=>{const x=el("a",t,"btn ghost");x.href=h;x.style.cssText="display:block;text-align:center;text-decoration:none;margin-top:8px;color:var(--maroon);border-color:var(--maroon)";b.appendChild(x)};
-if(pay=="UPI"){lk("Pay "+rs(gt)+" with UPI app","upi://pay?pa="+encodeURIComponent(SHOP_UPI)+"&pn="+encodeURIComponent("Sri Lakshmi Sweets")+"&am="+gt+"&cu=INR&tn="+encodeURIComponent("Preorder "+oid));b.appendChild(el("p","On a phone this opens your UPI app. On a computer, pay to UPI ID "+SHOP_UPI+" and write "+oid+" in the note. The shop confirms your payment.","note"))}
-lk("Email me a copy","mailto:"+user.em+"?subject="+encodeURIComponent("Your preorder "+oid+" at Sri Lakshmi Sweets")+"&body="+encodeURIComponent(msg));
+if(pay=="UPI"){lk("Pay "+rs(gt)+" with UPI app","upi://pay?pa="+encodeURIComponent(SHOP_UPI)+"&pn="+encodeURIComponent("Ramu's Sweets & Bakery")+"&am="+gt+"&cu=INR&tn="+encodeURIComponent("Preorder "+oid));b.appendChild(el("p","On a phone this opens your UPI app. On a computer, pay to UPI ID "+SHOP_UPI+" and write "+oid+" in the note. The shop confirms your payment.","note"))}
+lk("Email me a copy","mailto:"+user.em+"?subject="+encodeURIComponent("Your preorder "+oid+" at Ramu's Sweets & Bakery")+"&body="+encodeURIComponent(msg));
 lk("Send order by SMS to the shop","sms:+"+SHOP_WA+"?body="+encodeURIComponent(msg));
 b.appendChild(el("p","These buttons open WhatsApp, your email app or your messages app with the order ready. Tap send there.","note"));saveOrder(rec);cart=[];draw()};open("#ordOv")}
 // ADMIN LOGIN: use these on the normal Log in form to open the admin panel. Change them before showing a shopkeeper.
@@ -214,6 +216,6 @@ const x=el("button","Delete","btn ghost");x.style.cssText="color:#c0392b;border-
 const a=el("div",null,"orow"),nn=el("input"),nd=el("input"),np=el("input"),er=el("p","","err"),ad=el("button","Add sweet","btn dark");nn.placeholder="New sweet name";nd.placeholder="Short description";np.placeholder="Price per kg";np.type="number";
 ad.onclick=()=>{if(!nn.value.trim()||!(+np.value>0))return er.textContent="Enter a name and a price.";P.push([nn.value.trim(),nd.value.trim()||"Fresh and tasty",+np.value,"",false]);saveMenu();own("s")};a.append(nn,nd,np,ad);c.append(a,er)}}
 $("#admBtn").onclick=()=>{own("o");open("#ownOv")};
-$("#heroK").innerHTML=kolam(3,0);try{const m=JSON.parse(st.get("sls_menu")||"null");if(Array.isArray(m)&&m.length)P=m}catch(e){}$("#cAd").textContent=SHOP_ADDRESS;$("#cMap").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(SHOP_ADDRESS);$("#cPh").textContent=SHOP_PHONE;$("#cPh").href="tel:+"+SHOP_WA;$("#cHr").textContent=SHOP_HOURS;$("#wab").href="https://wa.me/"+SHOP_WA+"?text="+encodeURIComponent("Hello, I have a question about your sweets.");
+$("#heroK").innerHTML=kolam(3,0);try{const m=JSON.parse(st.get("sls_menu")||"null");if(Array.isArray(m)&&m.length)P=m}catch(e){}$("#cAd").textContent=SHOP_ADDRESS;$("#cMap").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(SHOP_ADDRESS);$("#cPh").textContent=SHOP_PHONE;$("#cPh").href="tel:"+SHOP_PHONE.replace(/\s/g,"");$("#cHr").textContent=SHOP_HOURS;$("#wab").href="https://wa.me/"+SHOP_WA+"?text="+encodeURIComponent("Hello, I have a question about your sweets.");
 $("#q").oninput=grid;grid();draw();const cur=st.get("sls_cur");if(cur)user=users().find(u=>u.em==cur)||null;if(st.get("sls_adm")=="1")owner=true;who();setMode("signup");
 </script></body></html>
