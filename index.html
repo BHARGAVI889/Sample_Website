@@ -68,8 +68,8 @@ footer{background:var(--maroon2);color:var(--gold);text-align:center;padding:18p
 .contact{background:var(--card);border-top:3px solid var(--gold);padding:26px 16px}.contact h2{max-width:1080px;margin:0 auto 10px;color:var(--maroon)}.cg{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.cg p{margin:2px 0 6px}.cg a{color:var(--orange);font-weight:700}#wab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:15;background:#128c4a;color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3);display:flex;gap:8px;align-items:center}
 @media (prefers-color-scheme:dark){.contact h2{color:var(--gold)}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-</style></head><body>
-<header class="hdr"><div class="logo">Sri Lakshmi Sweets</div>
+</style></head><body><div class="logo">Ramu's Sweets &amp; Bakery</div>
+<header class="hdr">
 <span id="who"></span><button class="btn ghost" id="admBtn" style="display:none">Admin panel</button><button class="btn ghost" id="authBtn">Sign in</button><button class="btn" id="cartBtn">Cart (0)</button></header>
 <section class="hero">
 <div id="heroK"></div><svg style="display:none" aria-hidden="true"><g id="k"><ellipse cx="50" cy="50" rx="34" ry="11"/><ellipse cx="50" cy="50" rx="34" ry="11" transform="rotate(45 50 50)"/><ellipse cx="50" cy="50" rx="34" ry="11" transform="rotate(90 50 50)"/><ellipse cx="50" cy="50" rx="34" ry="11" transform="rotate(135 50 50)"/></g>
@@ -80,7 +80,7 @@ footer{background:var(--maroon2);color:var(--gold);text-align:center;padding:18p
 <div class="strip"></div>
 <main><h2>Our sweets</h2><p class="sub">Prices are per kg. Pick a weight on each sweet.</p><div class="srch"><input id="q" type="search" placeholder="Search sweets, like laddu or halwa" aria-label="Search sweets"></div><div class="grid" id="grid"></div></main>
 <section class="contact"><h2>Visit us</h2><div class="cg"><div><b>Address</b><p id="cAd"></p><a id="cMap" target="_blank" rel="noopener">Open in Google Maps</a></div><div><b>Phone</b><p><a id="cPh"></a></p></div><div><b>Opening hours</b><p id="cHr"></p></div></div></section>
-<footer>Sri Lakshmi Sweets · Preorder at least one day before</footer>
+<footer>Ramu's Sweets &amp; Bakery · Preorder at least one day before</footer>
 <a id="wab" target="_blank" rel="noopener" aria-label="Chat with the shop on WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>Chat with us</a>
 
 <div class="ov" id="cartOv"><div class="pn"><button class="x" data-close aria-label="Close">×</button><h2>Your cart</h2><div id="cartList"></div><div class="row" style="margin-top:14px"><b>Total</b><b id="tot">₹0</b></div><p class="err" id="minmsg"></p><button class="btn dark" style="width:100%;margin-top:14px" id="checkout">Continue to preorder</button></div></div>
